@@ -1,0 +1,6 @@
+.vs/*
+TimeManager/bin/*
+TimeManager/obj/*
+TimeManager/publish/*
+TimeManager.Model/bin/*
+TimeManager.Model/obj/*
