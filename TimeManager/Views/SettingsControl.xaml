@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="TimeManager.Views.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TimeManager.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="650"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <Grid ScrollViewer.CanContentScroll="True">
+        <ScrollViewer VerticalAlignment="Top"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <StackPanel Margin="10">
+                    <Label Background="{DynamicResource HeaderTabColor}"
+                           Content="{DynamicResource Menu2}" />
+                    <StackPanel Background="{DynamicResource TabColor}">
+                        <WrapPanel Margin="5">
+                            <Label Content="{DynamicResource T2M21}"
+                                   Target="{Binding ElementName=TextBox1, Mode=OneWay}" />
+                            <TextBox x:Name="TextBox1"
+                                     MinWidth="100"
+                                     MaxLength="100"
+                                     Style="{DynamicResource SettingsText}"
+                                     Text="{DynamicResource StartMessage}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <Label Content="{DynamicResource T2M22}"
+                                   Target="{Binding ElementName=TextBox2, Mode=OneWay}" />
+                            <TextBox x:Name="TextBox2"
+                                     MinWidth="100"
+                                     MaxLength="100"
+                                     Style="{DynamicResource SettingsText}"
+                                     Text="{DynamicResource StopMessage}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <Label Content="{DynamicResource T2M23}"
+                                   Target="{Binding ElementName=TextBox3, Mode=OneWay}" />
+                            <TextBox x:Name="TextBox3"
+                                     MaxLength="4"
+                                     Style="{DynamicResource SettingsText}"
+                                     Text="45" />
+                            <Label Content="{DynamicResource Minute}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <Label Content="{DynamicResource T2M24}"
+                                   Target="{Binding ElementName=TextBox4, Mode=OneWay}" />
+                            <TextBox x:Name="TextBox4"
+                                     MaxLength="4"
+                                     Style="{DynamicResource SettingsText}"
+                                     Text="15" />
+                            <Label Content="{DynamicResource Minute}"
+                                   Target="{Binding ElementName=TextBox4, Mode=OneWay}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <Label Background="{DynamicResource HeaderTabColor}"
+                           Content="{DynamicResource Menu4}" />
+                    <StackPanel Background="{DynamicResource TabColor}">
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M41}"
+                                      IsChecked="True"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M42}"
+                                      IsChecked="True"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M45}"
+                                      IsChecked="True"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M43}"
+                                      IsChecked="False"
+                                      IsEnabled="False"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M44}"
+                                      IsChecked="True"
+                                      IsEnabled="False"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                        <WrapPanel Margin="5">
+                            <CheckBox Content="{DynamicResource T2M46}"
+                                      IsChecked="True"
+                                      IsEnabled="False"
+                                      Style="{DynamicResource SettingsCheckBox}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Margin="10">
+                    <Button HorizontalAlignment="Right"
+                            Content="{DynamicResource Reset}"
+                            Style="{DynamicResource TimeButton}" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

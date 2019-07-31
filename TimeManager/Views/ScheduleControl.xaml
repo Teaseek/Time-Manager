@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="TimeManager.Views.ScheduleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:TimeManager.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Foreground="{DynamicResource ForeColor}"
+             mc:Ignorable="d">
+    <Grid MinWidth="250">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <UniformGrid Grid.Row="1"
+                     Columns="2">
+            <Button Content="{DynamicResource Start}"
+                    Style="{DynamicResource TimeButton}" />
+            <Button Content="{DynamicResource Reset}"
+                    Style="{DynamicResource TimeButton}" />
+        </UniformGrid>
+        <UniformGrid Grid.Row="0"
+                     Columns="2">
+            <Grid>
+                <Rectangle Margin="10"
+                           Fill="{DynamicResource TabColor}" />
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"
+                                       MinHeight="100px" />
+                        <RowDefinition Height="9*" />
+                    </Grid.RowDefinitions>
+                    <Grid Background="{DynamicResource HeaderTabColor}">
+                        <TextBlock Grid.Row="0"
+                                   Style="{DynamicResource LabelTime}"
+                                   Text="{DynamicResource T2M23}" />
+                    </Grid>
+                    <Viewbox Grid.Row="1"
+                             MaxHeight="100">
+                        <TextBlock Style="{DynamicResource Time}"
+                                   Text="-12:22" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+            <Grid>
+                <Rectangle Margin="10"
+                           Fill="{DynamicResource TabColor}" />
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"
+                                       MinHeight="100px" />
+                        <RowDefinition Height="9*" />
+                    </Grid.RowDefinitions>
+                    <Grid Background="{DynamicResource HeaderTabColor}">
+                        <TextBlock Grid.Row="0"
+                                   Style="{DynamicResource LabelTime}"
+                                   Text="{DynamicResource T2M24}" />
+                    </Grid>
+                    <Viewbox Grid.Row="1"
+                             MaxHeight="100">
+                        <TextBlock Style="{DynamicResource Time}"
+                                   Text="12:22" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </UniformGrid>
+    </Grid>
+</UserControl>
