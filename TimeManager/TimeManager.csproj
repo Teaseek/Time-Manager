@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\RelayCommand.cs" />
+    <Compile Include="ViewModels\MainVM.cs" />
+    <Compile Include="ViewModels\SessionVM.cs" />
     <Compile Include="Views\OperatingTimeControl.xaml.cs">
       <DependentUpon>OperatingTimeControl.xaml</DependentUpon>
     </Compile>
@@ -138,9 +141,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\main.ico" />
   </ItemGroup>

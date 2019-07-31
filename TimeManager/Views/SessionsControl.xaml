@@ -4,9 +4,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TimeManager.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TimeManager.ViewModels"
+             d:DataContext="{d:DesignInstance {x:Type viewModels:MainVM}}"
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:SessionVM}">
+            <Grid Margin="10,2"
+                  VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition MinWidth="100" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Style="{DynamicResource SettingsLabel}"
+                           Text="{DynamicResource T1Name}" />
+                <TextBox Grid.Column="1"
+                         Padding="0"
+                         Text="{Binding Name}" />
+                <TextBlock Grid.Column="2"
+                           Style="{DynamicResource SettingsLabel}"
+                           Text="{DynamicResource T1Label}"
+                           Visibility="Visible" />
+                <TextBox Grid.Column="3"
+                         Margin="5,0"
+                         HorizontalAlignment="Center"
+                         Text="{Binding Time}" />
+                <TextBlock Grid.Column="4"
+                           Style="{DynamicResource SettingsLabel}"
+                           Text="{DynamicResource T1Date}"
+                           Visibility="Visible" />
+                <TextBox Grid.Column="5"
+                         Margin="5,0"
+                         HorizontalAlignment="Center"
+                         Text="{Binding Date}" />
+                <Button Grid.Column="6"
+                        Command="{Binding RemoveCommand}"
+                        Content="{DynamicResource Delete}"
+                        Style="{DynamicResource SessionButton}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid Margin="10"
           Background="{DynamicResource TabColor}">
         <Grid.RowDefinitions>
@@ -24,28 +68,40 @@
             <Grid Margin="10"
                   VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition MinWidth="100" />
-                    <ColumnDefinition MinWidth="90"
-                                      MaxWidth="150" />
-                    <ColumnDefinition MinWidth="90"
-                                      MaxWidth="150" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"
+                           Style="{DynamicResource SettingsLabel}"
                            Text="{DynamicResource T1Name}" />
                 <TextBox Grid.Column="1"
                          Padding="0"
-                         Text="{DynamicResource T1NameText}" />
-                <TextBox Grid.Column="2"
-                         HorizontalAlignment="Center"
-                         Text="{DynamicResource T1OperatingTime}" />
+                         Text="{Binding CurrentSession}"
+                         TextDecorations="" />
+                <TextBlock Grid.Column="2"
+                           Style="{DynamicResource SettingsLabel}"
+                           Text="{DynamicResource T1Label}"
+                           Visibility="Visible" />
                 <TextBox Grid.Column="3"
+                         Margin="5,0"
                          HorizontalAlignment="Center"
-                         Text="{DynamicResource T1Time}" />
-                <Button Grid.Column="4"
+                         VerticalAlignment="Bottom"
+                         Text="{Binding CurrentTime}" />
+                <TextBlock Grid.Column="4"
+                           Style="{DynamicResource SettingsLabel}"
+                           Text="{DynamicResource T1Date}"
+                           Visibility="Visible" />
+                <TextBox Grid.Column="5"
+                         Margin="5,0"
+                         HorizontalAlignment="Center"
+                         Text="{Binding CurrentDate}" />
+                <Button Grid.Column="6"
+                        Command="{Binding SaveCommand}"
                         Content="{DynamicResource Save}"
                         Style="{DynamicResource SessionButton}" />
             </Grid>
@@ -53,40 +109,8 @@
         <Grid Grid.Row="2" />
         <ListBox Grid.Row="2"
                  BorderThickness="0"
-                 SelectionMode="Single">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Margin="10,2"
-                          VerticalAlignment="Top">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60" />
-                            <ColumnDefinition MinWidth="100" />
-                            <ColumnDefinition MinWidth="90"
-                                              MaxWidth="150" />
-                            <ColumnDefinition MinWidth="90"
-                                              MaxWidth="150" />
-                            <ColumnDefinition Width="100" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Text="{DynamicResource T1Name}" />
-                        <TextBox Grid.Column="1"
-                                 Padding="0"
-                                 Text="{Binding Name}" />
-                        <TextBox Grid.Column="2"
-                                 HorizontalAlignment="Center"
-                                 Text="{Binding Time}" />
-                        <TextBox Grid.Column="3"
-                                 HorizontalAlignment="Center"
-                                 Text="{Binding Date}" />
-                        <Button Grid.Column="4"
-                                Width="Auto"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Content="{DynamicResource Delete}" />
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                 ItemsSource="{Binding Sessions}"
+                 SelectedItem="{Binding Session}"
+                 SelectionMode="Single" />
     </Grid>
 </UserControl>

@@ -27,6 +27,8 @@
 
     <system:String x:Key="T1Name">Name:</system:String>
     <system:String x:Key="T1NameText">Current work</system:String>
+    <system:String x:Key="T1Label">Time:</system:String>
+    <system:String x:Key="T1Date">Date:</system:String>
     <system:String x:Key="T1OperatingTime">0000:00:00</system:String>
     <system:String x:Key="T1Time">00:00:0000</system:String>
 

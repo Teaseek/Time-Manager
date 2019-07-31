@@ -4,6 +4,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:TimeManager.Views"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TimeManager.ViewModels"
+             d:DataContext="{d:DesignInstance {x:Type viewModels:MainVM}}"
              d:DesignHeight="650"
              d:DesignWidth="800"
              mc:Ignorable="d">
@@ -12,8 +14,9 @@
                       VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <StackPanel Margin="10">
-                    <Label Background="{DynamicResource HeaderTabColor}"
-                           Content="{DynamicResource Menu2}" />
+                    <TextBlock Background="{DynamicResource HeaderTabColor}"
+                               Style="{DynamicResource SessionLabel}"
+                               Text="{DynamicResource Menu2}" />
                     <StackPanel Background="{DynamicResource TabColor}">
                         <WrapPanel Margin="5">
                             <Label Content="{DynamicResource T2M21}"
@@ -22,7 +25,7 @@
                                      MinWidth="100"
                                      MaxLength="100"
                                      Style="{DynamicResource SettingsText}"
-                                     Text="{DynamicResource StartMessage}" />
+                                     Text="{Binding OnWorkNotificationText}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <Label Content="{DynamicResource T2M22}"
@@ -31,7 +34,7 @@
                                      MinWidth="100"
                                      MaxLength="100"
                                      Style="{DynamicResource SettingsText}"
-                                     Text="{DynamicResource StopMessage}" />
+                                     Text="{Binding OnFreeNotificationText}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <Label Content="{DynamicResource T2M23}"
@@ -39,7 +42,7 @@
                             <TextBox x:Name="TextBox3"
                                      MaxLength="4"
                                      Style="{DynamicResource SettingsText}"
-                                     Text="45" />
+                                     Text="{Binding WorkingTime}" />
                             <Label Content="{DynamicResource Minute}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
@@ -48,29 +51,30 @@
                             <TextBox x:Name="TextBox4"
                                      MaxLength="4"
                                      Style="{DynamicResource SettingsText}"
-                                     Text="15" />
+                                     Text="{Binding FreeTime}" />
                             <Label Content="{DynamicResource Minute}"
                                    Target="{Binding ElementName=TextBox4, Mode=OneWay}" />
                         </WrapPanel>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Margin="10">
-                    <Label Background="{DynamicResource HeaderTabColor}"
-                           Content="{DynamicResource Menu4}" />
+                    <TextBlock Background="{DynamicResource HeaderTabColor}"
+                               Style="{DynamicResource SessionLabel}"
+                               Text="{DynamicResource Menu4}" />
                     <StackPanel Background="{DynamicResource TabColor}">
                         <WrapPanel Margin="5">
                             <CheckBox Content="{DynamicResource T2M41}"
-                                      IsChecked="True"
+                                      IsChecked="{Binding IsSideNoticesDisplayed}"
                                       Style="{DynamicResource SettingsCheckBox}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <CheckBox Content="{DynamicResource T2M42}"
-                                      IsChecked="True"
+                                      IsChecked="{Binding IsCenterNoticesDisplayed}"
                                       Style="{DynamicResource SettingsCheckBox}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <CheckBox Content="{DynamicResource T2M45}"
-                                      IsChecked="True"
+                                      IsChecked="{Binding IsTimeRemainingDisplayed}"
                                       Style="{DynamicResource SettingsCheckBox}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
@@ -81,13 +85,13 @@
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <CheckBox Content="{DynamicResource T2M44}"
-                                      IsChecked="True"
+                                      IsChecked="False"
                                       IsEnabled="False"
                                       Style="{DynamicResource SettingsCheckBox}" />
                         </WrapPanel>
                         <WrapPanel Margin="5">
                             <CheckBox Content="{DynamicResource T2M46}"
-                                      IsChecked="True"
+                                      IsChecked="False"
                                       IsEnabled="False"
                                       Style="{DynamicResource SettingsCheckBox}" />
                         </WrapPanel>
@@ -95,6 +99,7 @@
                 </StackPanel>
                 <Grid Margin="10">
                     <Button HorizontalAlignment="Right"
+                            Command="{Binding ResetSettingsCommand}"
                             Content="{DynamicResource Reset}"
                             Style="{DynamicResource TimeButton}" />
                 </Grid>

@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:TimeManager"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:TimeManager.ViewModels"
         xmlns:views="clr-namespace:TimeManager.Views"
         Title="{DynamicResource Title}"
         Width="800"
         Height="450"
+        d:DataContext="{d:DesignInstance {x:Type viewModels:MainVM}}"
         Background="{DynamicResource TabColor}"
         FontFamily="Century Gothic"
         Foreground="{DynamicResource ForeColor}"
@@ -68,15 +70,22 @@
         <Style x:Key="Time"
                BasedOn="{StaticResource {x:Type TextBlock}}"
                TargetType="TextBlock">
+            <Setter Property="FontSize" Value="60" />
             <Setter Property="Foreground" Value="{DynamicResource ForeColor}" />
+            <Setter Property="MinHeight" Value="100" />
             <Setter Property="Padding" Value="1" />
             <Setter Property="TextAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
+        <Style x:Key="TimeGrid"
+               TargetType="Grid">
+            <Setter Property="MinHeight" Value="100" />
+            <Setter Property="MinWidth" Value="100" />
+        </Style>
         <Style x:Key="LabelTime"
                BasedOn="{StaticResource {x:Type TextBlock}}"
                TargetType="TextBlock">
-            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="{DynamicResource ForeColor}" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="Padding" Value="0" />
@@ -95,7 +104,7 @@
                BasedOn="{StaticResource {x:Type TextBlock}}"
                TargetType="TextBlock">
             <Setter Property="Background" Value="{DynamicResource SelectTabColor}" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="15" />
             <Setter Property="Foreground" Value="{DynamicResource ForeColor}" />
             <Setter Property="Padding" Value="5" />
             <Setter Property="TextAlignment" Value="Center" />
@@ -124,6 +133,14 @@
             <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
             <Setter Property="Padding" Value="0" />
         </Style>
+        <Style x:Key="SettingsLabel"
+               BasedOn="{StaticResource {x:Type TextBlock}}"
+               TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -143,12 +160,10 @@
                                Text="{DynamicResource Tab1}" />
                 </TabItem.Header>
                 <TabItem.Content>
-                    <Grid>
-                        <views:ScheduleControl />
-                    </Grid>
+                    <views:ScheduleControl />
                 </TabItem.Content>
             </TabItem>
-            <TabItem>
+            <TabItem Visibility="Collapsed">
                 <TabItem.Header>
                     <TextBlock Style="{DynamicResource TabHeader}"
                                Text="{DynamicResource Tab2}" />
@@ -160,7 +175,7 @@
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Style="{DynamicResource TabHeader}"
-                               Text="{DynamicResource Tab3}" />
+                               Text="{DynamicResource Tab3}" Margin="0,1,0,0" VerticalAlignment="Top" />
                 </TabItem.Header>
                 <TabItem.Content>
                     <views:SessionsControl />
