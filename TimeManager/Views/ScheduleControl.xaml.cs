@@ -12,16 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TimeManager.ViewModels;
 
-namespace TimeManager
+namespace TimeManager.Views
 {
-	public partial class MainWindow : Window
-	{
-		public MainWindow()
-		{
-			InitializeComponent();
-			DataContext = new MainVM();
-		}
-	}
+    /// <summary>
+    /// Логика взаимодействия для ScheduleControl.xaml
+    /// </summary>
+    public partial class ScheduleControl : UserControl
+    {
+        public ScheduleControl()
+        {
+            InitializeComponent();
+        }
+    }
 }

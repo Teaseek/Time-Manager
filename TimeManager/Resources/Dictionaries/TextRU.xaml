@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="Title">Менеджер времени</system:String>
+
+    <system:String x:Key="Tab1">График</system:String>
+    <system:String x:Key="Tab2">Все время работы</system:String>
+    <system:String x:Key="Tab3">Сессия</system:String>
+    <system:String x:Key="Tab4">Настройки</system:String>
+    <system:String x:Key="Tab5">Запись экрана</system:String>
+
+    <system:String x:Key="Start">Начать</system:String>
+    <system:String x:Key="Pause">Пауза</system:String>
+    <system:String x:Key="Reset">Сбросить</system:String>
+    <system:String x:Key="Open">Открыть</system:String>
+    <system:String x:Key="Stop">Остановить</system:String>
+    <system:String x:Key="Save">Сохранить</system:String>
+    <system:String x:Key="Cancel">Отмена</system:String>
+    <system:String x:Key="Delete">Удалить</system:String>
+    <system:String x:Key="Apply">Применить</system:String>
+
+    <system:String x:Key="Menu1">Предыдущие сессии</system:String>
+    <system:String x:Key="Menu4">Разное</system:String>
+    <system:String x:Key="Menu2">Время</system:String>
+    <system:String x:Key="Menu3">Цвета</system:String>
+    <system:String x:Key="Menu5">Запись экрана</system:String>
+
+    <system:String x:Key="T1Name">Имя:</system:String>
+    <system:String x:Key="T1NameText">Актуальная сессия</system:String>
+    <system:String x:Key="T1Label">Время:</system:String>
+    <system:String x:Key="T1Date">Дата:</system:String>
+    <system:String x:Key="T1OperatingTime">0000:00:00</system:String>
+    <system:String x:Key="T1Time">00:00:0000</system:String>
+
+    <system:String x:Key="T2M41">Уведомления сбоку</system:String>
+    <system:String x:Key="T2M42">Уведомления по центру</system:String>
+    <system:String x:Key="T2M43">Тёмная тема</system:String>
+    <system:String x:Key="T2M44">Анимация</system:String>
+    <system:String x:Key="T2M45">Показывать оставшееся время</system:String>
+    <system:String x:Key="T2M46">Запускать при запуске системы</system:String>
+    <system:String x:Key="T2M47">Начинать запись экрана при старте таймеров</system:String>
+
+    <system:String x:Key="Minute">мин.</system:String>
+    <system:String x:Key="StartMessage">Пора приступать к работе</system:String>
+    <system:String x:Key="StopMessage">Можешь отдохнуть</system:String>
+
+    <system:String x:Key="T2M21">Текст уведомления о работе</system:String>
+    <system:String x:Key="T2M22">Текст уведомления об отдыхе</system:String>
+    <system:String x:Key="T2M23">Время работы</system:String>
+    <system:String x:Key="T2M24">Время отдыха</system:String>
+    <system:String x:Key="T2M25">Все время</system:String>
+</ResourceDictionary>
