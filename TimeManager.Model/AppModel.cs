@@ -2,34 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TimeManager.Model
 {
 	public static class AppModel
 	{
-		public static List<Session> Sessions { get; } = new List<Session>();
-		public static List<Session> RemovedSessions { get; } = new List<Session>();
-		public static Session CurrentSession { get; set; }
-		public static Timer CurrentTimer => CurrentSession.Timer;
+		public static readonly CancellationTokenSource CancellationTokenSource = new();
+		public static int Latancy => 100;
+		public static User User { get; set; } = new();
 
-		public static Session AddSession(Timer timer, string name)
+		public static void StartUpdating()
 		{
-			var session = new Session(timer, name);
-			Sessions.Add(session);
-			return session;
+			if (User.CurrentTask is null)
+				return;
+			bool isUpdating = true;
+			void Update()
+			{
+				do
+				{
+					if (CancellationTokenSource.Token.IsCancellationRequested)
+					{
+						User.Timeline.ResetTimelineQueue();
+                        isUpdating = false;
+                        break;
+					}
+					User.Timeline.DoCycle();
+					CancellationTokenSource.Token.WaitHandle.WaitOne(Latancy);
+				} while (isUpdating);
+			}
+			var update = new Action(Update);
+			Task.Run(update, CancellationTokenSource.Token);
+			Task.Run(Watch.Update, CancellationTokenSource.Token);
 		}
-		public static void SetCurrentSession(Session session)
-		{
-			if (!Sessions.Contains(session))
-				Sessions.Add(session);
-			CurrentSession = session;
+
+		public static void StopUpdating()
+        {
+			CancellationTokenSource.Cancel();
 		}
-		public static void RemoveSession(Session session)
-		{
-			RemovedSessions.Add(session);
-			Sessions.Remove(session);
-		}
+
 
 	}
 }
