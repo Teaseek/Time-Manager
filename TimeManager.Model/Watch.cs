@@ -9,7 +9,6 @@ using System.Xml.Serialization;
 
 namespace TimeManager.Model
 {
-    [XmlRootAttribute("Watch")]
     public class Watch: ICloneable
     {
         static readonly Stopwatch Timer = new();
@@ -40,12 +39,10 @@ namespace TimeManager.Model
         }
 
 
-
-
         TimeSpan onStartTime = new();
         TimeSpan previousElapsedWatch = new();
-
         public bool IsRunning { get; private set; }
+
         public TimeSpan PreviousElapsedWatch
         {
             get => previousElapsedWatch;
@@ -56,6 +53,8 @@ namespace TimeManager.Model
             get => GetEllapsedTimeWatch();
             set => SetEllapsedTimeWatch(value);
         }
+
+
         public Watch()
         {
             TimerStopped += Watch_TimerStopping;
@@ -79,6 +78,8 @@ namespace TimeManager.Model
         {
             return new Watch(ElapsedWatch);
         }
+
+
         protected void StartWatch()
         {
             if (!Timer.IsRunning)

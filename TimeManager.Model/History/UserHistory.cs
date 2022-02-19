@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TimeManager.Model
+namespace TimeManager.Model.History
 {
-    public class UserStatistics
+    public class UserHistory
     {
         public List<Interval> Intervals { get; private set; } = new();
         public Interval ActiveInterval => Intervals.LastOrDefault();

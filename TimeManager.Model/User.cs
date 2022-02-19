@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeManager.Model.History;
 
 namespace TimeManager.Model
 {
@@ -14,7 +15,7 @@ namespace TimeManager.Model
         public List<UserTask> Tasks { get; } = new();
         public UserTask HiddenTask { get; private set; }
         public UserTask CurrentTask { get; private set; }
-        public UserStatistics UserStatistics { get; private set; } = new();
+        public UserHistory UserHistory { get; private set; } = new();
         public Timeline Timeline { get; private set; } = new();
 
         public User()
@@ -34,13 +35,11 @@ namespace TimeManager.Model
 
         private void TimeBlockCycle(object sender, TimeBlockCycleEventArgs e)
         {
-            //CurrentTask.ResetTime();
             if (CurrentTask == null)
             {
                 SelectHidden();
             }
-            UserStatistics.Add(CurrentTask, e.ActiveTimeBlock, e.Reason);
-            //CurrentTask.SetTime(Timeline);
+            UserHistory.Add(CurrentTask, e.ActiveTimeBlock, e.Reason);
         }
 
         public UserTask AddTask(string name)
@@ -80,24 +79,24 @@ namespace TimeManager.Model
             {
                 if (CurrentTask.IsHiddenTask)
                 {
-                    UserStatistics.MergeHiddenTask(task, CurrentTask);
+                    UserHistory.MergeHiddenTask(task, CurrentTask);
                 }
                 UnselectTask();
             }
             CurrentTask = task;
             CurrentTask.Select(Timeline);
-            UserStatistics.Add(CurrentTask, Timeline.ActiveTimeBlock, CreationCauses.TaskChange);
+            UserHistory.Add(CurrentTask, Timeline.ActiveTimeBlock, CreationCauses.TaskChange);
             CurrentTask.UserTaskTimeUpdated += UserTaskTimeUpdated;
             Timeline.SaveTime = new Action<Timeline>[2]
             {
                 task.Save,
-                UserStatistics.Save
+                UserHistory.Save
             };
         }
 
         private void UserTaskTimeUpdated(object sender, UserTaskEventArgs e)
         {
-            UserStatistics.Save((UserTask)sender);
+            UserHistory.Save((UserTask)sender);
         }
     }
 }

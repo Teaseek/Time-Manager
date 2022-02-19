@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeManager.Model.History;
 
 namespace TimeManager.Model
 {
@@ -16,6 +17,8 @@ namespace TimeManager.Model
             Reason = reason;
         }
     }
+
+
     public class Timeline
     {
         public LinkedList<TimeBlock> TimeBlocks { get; set; } = new();
@@ -133,19 +136,15 @@ namespace TimeManager.Model
                 ServiceTimeBlocks[TimeBlockTypes.Pause].Start();
                 return;
             }
-            else
-            {
-                ServiceTimeBlocks[TimeBlockTypes.Pause].Stop();
-            }
             if (IsStopped)
             {
                 ServiceTimeBlocks[TimeBlockTypes.Stop].Start();
                 return;
             }
-            else
-            {
+            if (!IsPaused)
+                ServiceTimeBlocks[TimeBlockTypes.Pause].Stop();
+            if (!IsStopped)
                 ServiceTimeBlocks[TimeBlockTypes.Stop].Stop();
-            }
 
             if (CurrentTimeBlock.Value.ElapsedWatch.CompareTo(CurrentTimeBlock.Value.SkipTime) == 1)
             {

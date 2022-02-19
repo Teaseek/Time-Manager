@@ -15,13 +15,11 @@ namespace TimeManager.Model
         Other = -1
     }
 
-    [XmlRootAttribute("TimeBlock")]
     public class TimeBlock : Watch, ICloneable
     {
         public class TimeBlockTag : IComparable<TimeBlockTag>
         {
             public string Name { get; set; }
-
             public int CompareTo(TimeBlockTag other) => Name.CompareTo(other.Name);
         }
         public string Name { get; set; }

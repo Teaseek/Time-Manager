@@ -1,6 +1,6 @@
 using System;
 
-namespace TimeManager.Model
+namespace TimeManager.Model.History
 {
     public enum CreationCauses
     {

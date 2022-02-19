@@ -45,7 +45,7 @@ namespace ModelTest
                 {
                     config.Selector = "--> ";
                     config.EnableWriteTitle = true;
-                    config.WriteTitleAction = title => Console.WriteLine(AppModel.User.UserStatistics.ToString());
+                    config.WriteTitleAction = title => Console.WriteLine(AppModel.User.UserHistory.ToString());
                 });
         }
         public static ConsoleMenu ShowTasks(string[] args)
